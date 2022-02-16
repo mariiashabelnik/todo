@@ -7,3 +7,12 @@
   margin: 1em auto;
   padding: 1em;
 }
+
+.tasks {
+  background-color: #ffc;
+
+
+
+  box-shadow: 2px 2px 20px rgba(0, 0, 0, .7);
+
+}

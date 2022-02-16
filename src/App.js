@@ -62,7 +62,8 @@ function App() {
           createTodo={createTodo}
           btnValue="Add"
         />
-        {list}
+        <br />
+        <div className="tasks">{list}</div>
       </Paper>
     </div>
   );

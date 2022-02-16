@@ -4,6 +4,7 @@ import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
+
 import "./Task.css";
 
 function Task({ title, toggleTask, removeTask, index, completed }) {
