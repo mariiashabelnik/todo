@@ -10,9 +10,11 @@ function App() {
   const [todos, setTodos] = useState([]);
 
   function createTodo() {
-    todos.push({ task: inputText, completed: false });
-    setTodos(todos);
-    setInputText("");
+    if (inputText !== "") {
+      todos.push({ task: inputText, completed: false });
+      setTodos(todos);
+      setInputText("");
+    }
   }
 
   function toggleTask(clickIndex) {
