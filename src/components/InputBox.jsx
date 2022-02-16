@@ -30,6 +30,7 @@ function InputBox({ setInputText, inputText, btnValue, createTodo }) {
             onClick={createTodo}
             variant="contained"
             className="input"
+            disabled={inputText === ""}
           >
             {btnValue}
           </Button>
