@@ -1,5 +1,14 @@
-.task {}
+@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
+
+.task {
+    border: 1px solid rgba(43, 43, 43, 0.144);
+    background-color: rgba(255, 255, 255, 0.308);
+    font-family: 'Gochi Hand', cursive;
+}
 
 .done {
     text-decoration: line-through;
+    opacity: 0.4;
+    font-family: 'Gochi Hand', cursive;
+
 }

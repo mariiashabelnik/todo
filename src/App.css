@@ -1,15 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
+
 .App {
   text-align: center;
+  font-size: 2em;
 }
 
 .content {
   width: 700px;
   margin: 1em auto;
   padding: 1em;
+
 }
 
-.tasks {
-  background-color: rgb(191, 212, 252);
-  box-shadow: 2px 2px 20px rgba(0, 0, 0, .7);
+.MuiTypography-root {
+  font-family: 'Gochi Hand', cursive;
+}
 
+.MuiPaper+root {
+  box-shadow: none;
 }

@@ -3,6 +3,7 @@ import InputBox from "./components/InputBox";
 import { useState } from "react";
 import Task from "./components/Task";
 import Paper from "@mui/material/Paper";
+import "./index.css";
 
 function App() {
   const [inputText, setInputText] = useState("");
@@ -55,6 +56,7 @@ function App() {
 
   return (
     <div className="App">
+      <p>To Do list</p>
       <Paper elevation={3} className="content">
         <InputBox
           inputText={inputText}
