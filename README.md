@@ -68,3 +68,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+### link to app
+
+[https://todo-reminder-list.netlify.app/](https://todo-reminder-list.netlify.app/)
+
+<a href=https://todo-reminder-list.netlify.app/">link</a>
