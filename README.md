@@ -1,6 +1,9 @@
-# Getting Started with Create React App
+# Todo ui
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## API
+
+start the todo api on port 5050
 
 ## Available Scripts
 
