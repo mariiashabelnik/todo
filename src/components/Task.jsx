@@ -7,7 +7,7 @@ import Grid from "@mui/material/Grid";
 
 import "./Task.css";
 
-function Task({ title, toggleTask, removeTask, index, completed }) {
+function Task({ title, toggleTask, removeTask, completed, id }) {
   let className = "task";
   if (completed === true) {
     className = "task done";
@@ -20,7 +20,7 @@ function Task({ title, toggleTask, removeTask, index, completed }) {
           <Checkbox
             checked={completed}
             onChange={() => {
-              toggleTask(index);
+              toggleTask(id, completed);
             }}
           />
         </Grid>
@@ -30,7 +30,7 @@ function Task({ title, toggleTask, removeTask, index, completed }) {
         <Grid item xs={1}>
           <IconButton
             onClick={() => {
-              removeTask(index);
+              removeTask(id);
             }}
             aria-label="remove task"
             component="span"

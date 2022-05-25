@@ -1,44 +1,89 @@
 import "./App.css";
 import InputBox from "./components/InputBox";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Task from "./components/Task";
 import Paper from "@mui/material/Paper";
 import "./index.css";
 
 function App() {
   const [inputText, setInputText] = useState("");
-
   const [todos, setTodos] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      // ladda mina todos
+      const resp = await fetch("http://localhost:5050/todos");
+      const json = await resp.json();
+      setTodos(json);
+    };
+
+    fetchData();
+  }, []);
 
   function createTodo() {
     if (inputText !== "") {
-      todos.push({ task: inputText, completed: false });
-      setTodos(todos);
-      setInputText("");
+      const myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+
+      const raw = JSON.stringify({
+        task: inputText,
+        completed: false,
+      });
+
+      var requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow",
+      };
+
+      fetch("http://localhost:5050/todos", requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
+          setTodos(result);
+          setInputText("");
+        })
+        .catch((error) => console.log("error", error));
+
+      //todos.push({ task: inputText, completed: false });
     }
   }
 
-  function toggleTask(clickIndex) {
-    const newTodo = todos.map((item, index) => {
-      if (clickIndex === index) {
-        item.completed = !item.completed;
-      }
-      return item;
+  function toggleTask(id, completed) {
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const raw = JSON.stringify({
+      completed: !completed,
     });
 
-    setTodos(newTodo);
+    const requestOptions = {
+      method: "PATCH",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+
+    fetch(`http://localhost:5050/todos/${id}`, requestOptions)
+      .then((response) => response.json())
+      .then((result) => {
+        setTodos(result);
+      })
+      .catch((error) => console.log("error", error));
   }
 
-  function removeTask(clickIndex) {
-    const newTodo = todos.filter((item, index) => {
-      if (clickIndex === index) {
-        return false;
-      } else {
-        return true;
-      }
-    });
+  function removeTask(id) {
+    const requestOptions = {
+      method: "DELETE",
+      redirect: "follow",
+    };
 
-    setTodos(newTodo);
+    fetch(`http://localhost:5050/todos/${id}`, requestOptions)
+      .then((response) => response.json())
+      .then((result) => {
+        setTodos(result);
+      })
+      .catch((error) => console.log("error", error));
   }
 
   const list = todos.map((item, index) => {
@@ -46,9 +91,9 @@ function App() {
       <Task
         key={item.task}
         title={item.task}
+        id={item.id}
         toggleTask={toggleTask}
         removeTask={removeTask}
-        index={index}
         completed={item.completed}
       />
     );
